@@ -45,7 +45,7 @@ public class musicplaylist{
         if(singer.length()!=0 && music.length()!=0){
             try{
                 if(isSinger.containsKey(singer)){
-                      HashMap<String,Integer> checkTheMusic=SingerMusic.get(music);
+                      HashMap<String,Integer> checkTheMusic=SingerMusic.get(singer);
                       //checkTheMusic.put("!",0);
                       try{
                         if(checkTheMusic==null){
@@ -59,11 +59,14 @@ public class musicplaylist{
                             int temp2=-1;
                             int presentAlready=0;
                             int presentAlreadyIndex=-1;
-                            if(AddingMusicCount.size()==0){
+                            if(AddingMusicCount==null || AddingMusicCount.size()==0){
                                 CountMusic temp0=new CountMusic(music);
                                 temp0.count=temp0.count+1;
-                                AddingMusicCount.add(temp0);
-                                HighestMusicPlayBySinger.put(singer,AddingMusicCount);
+                                //AddingMusicCount.add(temp0);
+                                ArrayList<CountMusic> newLi=new ArrayList<CountMusic>();
+                                newLi.add(temp0);
+                                //HighestMusicPlayBySinger.put(singer,AddingMusicCount);
+                                HighestMusicPlayBySinger.put(singer,newLi);
                             }
                             else if(AddingMusicCount.size()!=0){
                             for(int e=0;e<AddingMusicCount.size();e++){
